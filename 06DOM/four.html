@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee aur DOM </title>
+</head>
+<body style="background-color: #212121 ; color:beige">
+
+  <ul class="language">
+
+    <li>
+      Langauage we will use 
+    </li>
+    <br>
+  </ul>
+  
+</body>
+
+<script>
+  function addLang(lang) {
+  const li =  document.createElement ('li')
+
+  li.innerHTML= `${lang}`
+
+  document.querySelector('.language').appendChild(li)
+  }
+
+  addLang('JS')
+  addLang('Typescript')
+
+  // upar waaaale method .innerHtMl mein poora tree traverse hota hai so in big projects it is not optimezed way
+
+  function addOptiLang(lang){
+    const li = document.createElement("li")
+
+    const addText = document.createTextNode(lang)
+    li.appendChild(addText)
+
+    document.querySelector('.language').appendChild(li)
+
+    
+  }
+
+  addOptiLang("Love")
+  addOptiLang("Python")
+
+  // Edit 
+
+  // const secondLang = document.querySelector("li:nth-child(2)") yeh 2 space ko refer kar raha nodes yaad aaya jaha text , div.day , text tha...
+
+  const secondLang = document.querySelector("li:nth-child(4)")
+
+  console.log(secondLang);
+
+  // secondLang.innerHTML = "golang"
+
+  const newli= document.createElement('li')
+  newli.textContent = "golang"
+
+  secondLang.replaceWith(newli)
+  // TS replaced with Golang
+
+  const firstLang = document.querySelector('li:nth-child(3)')
+
+  const replace = firstLang.outerHTML= '<li> TypeScript </li>'
+
+  // outerhtml bhi change / add karne ka zariya hai..
+
+  firstLang.replaceWith(replace)
+  // Js changed to TS
+
+  // Delete python  
+
+  const lastLang = document.querySelector('li:nth-child(6)')
+  lastLang.remove()
+
+  // removes python
+
+
+
+
+
+</script>
+</html>
